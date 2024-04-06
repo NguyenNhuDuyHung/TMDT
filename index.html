@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./content/css/base.css">
+    <link rel="stylesheet" href="./content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./content/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <section class="section awe-section-1 mt-3">
+        <div class="container section px-md-0 mt-lg-0 mt-3">
+            <div class="section__slider section_slider clearfix">
+                <div class="home__slider home-slider d-flex align-items-center slick-initialized slick-dotted">
+                    <button class="slick-prev slick-arrow slick-hover">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div class="slick-track slick-track-banner">
+                        <div class="slick-slider">
+                            <img src="../../content/img/banner1.webp" alt="">
+                        </div>
+                        <div class="slick-slider">
+                            <img src="../../content/img/banner2.jpg" alt="">
+                        </div>
+                    </div>
+                    <button class="slick-next slick-arrow slick-hover">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <ul class="slick-dots">
+                        <li class="active"></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2 section_product_new section">
+        <div class="container py-2 card border-0">
+            <div class="section-2__container">
+                <div
+                    class="heading__bar title_module_main heading-bar d-flex justify-content-between align-items-center">
+                    <h2 class="heading__bar-title">
+                        Sản phẩm bán chạy
+                    </h2>
+                </div>
+
+                <div class="product__new-section slick-new mt-3 slick-initialized">
+                    <div class="slick-list slick-new mt-3 slick-initialized">
+                        <div class="slick-track slick-track-product">
+                            <?php foreach ($productHotList as $product) : ?>
+                            <div
+                                class="slick-slide col-md-12 col-6 slick-slide slick-current slick-active slick-product">
+                                <div class="item__product-main">
+                                    <div class="product__wrap">
+                                        <div class="product-thumbnail">
+                                            <a class="img-thumb"
+                                                href="?modules=product&action=details&id=<?= $product['MaSanPham'] ?>">
+                                                <img src="../../content/img/<?= $product['HinhAnh'] ?>" alt="">
+                                            </a>
+                                            <a href="?modules=product&action=details&id=<?= $product['MaSanPham'] ?>"
+                                                class="group-overlay">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="product-info">
+                                            <h3 class="product-name">
+                                                <a
+                                                    href="?modules=product&action=details&id=<?= $product['MaSanPham'] ?>">
+                                                    <?= $product['TenSanPham'] ?>
+                                                </a>
+                                            </h3>
+
+                                            <div class="price-box">
+                                                <span class="price">
+                                                    <?= $product['Gia'] ?>đ
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <?php foreach ($categoryList as $category) : ?>
+    <section class="section-2 section_product_new section">
+        <div class="container py-2 card border-0">
+            <div class="section-2__container">
+                <div
+                    class="heading__bar title_module_main heading-bar d-flex justify-content-between align-items-center">
+                    <h2 class="heading__bar-title">
+                        <a href="?modules=page&action=category&id=<?= $category['MaDanhMuc'] ?>">
+                            <?= $category['TenDanhMuc'] ?>
+                        </a>
+                    </h2>
+                </div>
+
+                <div class="wrapper container">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <ul class="carousel">
+                        <a href="" class="product">
+                            <div class="img img-thumb" draggable="false">
+                                <img src="../../content/img/duong-phen-hoa-cuc.jpg" alt="">
+                            </div>
+                            <div>
+                                <h2>Tai heo ngâm giấm chua ngọt hũ nhỏ - 500gr</h2>
+                                <span>500.000</span>
+                            </div>
+                        </a>
+                    </ul>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
+                </div>
+
+                <div class="product__view-all">
+                    <a href="?modules=page&action=category&id=<?= $category['MaDanhMuc'] ?>" class="btn-view-all">
+                        Xem tất cả
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php endforeach; ?>
+    <footer class="footer bg-white">
+        <div class="mid-footer">
+            <div class="container">
+                <div class="mid-footer-container">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+                            <h4 class="title-menu clicked">Về chúng tôi</h4>
+                            <p>
+                                Chợ Quê ONLINE - Địa chỉ trực tuyến mua sắm các loại thực phẩm rau củ quả và đặc sản
+                                các vùng miền như: khô mắm các loại, đường thốt nốt, trái cây, thực phẩm, bánh ngon,
+                                kẹo, mức...Chúng tôi tự tin khẳng đinh rằng sản phẩm từ cửa hàng chúng tôi luôn đảm
+                                bảo về chất lượng và giá cả...
+                            </p>
+                            <div class="single-contact">
+                                <i class="fa fa-map-marker-alt"></i>
+                                <div class="content">Địa chỉ:
+                                    <span></span>
+                                </div>
+                            </div>
+                            <div class="single-contact">
+                                <i class="fa fa-mobile-alt"></i>
+                                <div class="content content-phone">Số điện thoại:
+                                    <span>0333 505 078</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+                            <h4 class="title-menu clicked">Tìm hiểu thêm</h4>
+                            <ul class="list-menu toggle-mn">
+                                <li class="li_menu">
+                                    <a href="">Giới thiệu</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Chương trình khuyến mãi</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Hệ thống cửa hàng</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Hướng dẫn đặt hàng</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Tin tức</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Tuyển dụng</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+                            <h4 class="title-menu clicked">Hỗ trợ khách hàng</h4>
+                            <ul class="list-menu">
+                                <li class="li_menu">
+                                    <a href="">Thông tin liên hệ</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Chính sách giao hàng</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Chính sách đổi hàng</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Hướng dẫn đổi hàng</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Chính sách bảo mật</a>
+                                </li>
+                                <li class="li_menu">
+                                    <a href="">Điều khoản bảo mật</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-md-6 col-lg-3 footer-click">
+                            <div class="social-footer">
+                                <h4 class="title-menu clicked">Theo dõi chúng tôi</h4>
+                                <ul class="list-menu list-connect">
+                                    <li>
+                                        <a href="">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fab fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fab fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fab fa-tiktok"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h4 class="title-menu">Phương thức thanh toán</h4>
+                                <div class="product-trustbadge">
+                                    <a href="">
+                                        <img src="https://choqueonline.vn/public/template/images/product_trustbadge.jpeg"
+                                            alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer bg-footer-bottom copyright clearfix py-2">
+            <div class="container text-center">
+                <div class="bottom-footer-container">
+                    <div class="row">
+                        <div class="copyright col-lg-12 col-md-12 col-xs-12 fot_copyright">
+                            <span> © Bản quyền thuộc về Nguyễn Như Duy Hưng | </span>
+                            <a href="">Powered by Google</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" class="back-to-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    </div>
+</body>
+<script src="../../content/js/main.js"></script>
+<script src="../../content/js/bootstrap.min.js"></script>
+
+</html>
+</body>
+
+</html>

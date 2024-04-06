@@ -1,0 +1,51 @@
+:root {
+    --primary-color: #008848;
+    --text-color: #333;
+    --black-color: #000;
+    --white-color: #fff;
+
+}
+
+* {
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.btn {
+    font-size: 1.5rem;
+    min-width: 124px;
+    height: 36px;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn--primary:hover {
+    color: var(--white-color);
+    cursor: pointer;
+    filter: brightness(1.2);
+    background-color: #ff5722;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
