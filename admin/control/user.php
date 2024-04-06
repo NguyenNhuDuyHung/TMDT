@@ -19,7 +19,11 @@ if (isset($action)) {
             if (isset($editUser_submit)) {
                 $password = password_hash($filterAll['password'], PASSWORD_DEFAULT);
                 customer_edit($id, $name, $email, $password, $address, $phone, $admin);
+                setFlashData('msg', 'Sửa thành công');
+                setFlashData('msg_type', 'success');
             }
+            $msg = getFlashData('msg');
+            $msgType = getFlashData('msg_type');
             include_once 'view/template_header.php';
             include_once 'view/page_user_edit.php';
             include_once 'view/template_footer.php';

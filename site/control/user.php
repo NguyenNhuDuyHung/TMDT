@@ -187,7 +187,7 @@ if (isset($action)) {
                 $tokenQuery = pdo_query_one("SELECT MaKhachHang FROM KhachHang WHERE activeToken = '$token'");
                 if (!empty($tokenQuery)) {
                     $userId = $tokenQuery['MaKhachHang'];
-                    $updateStatus = pdo_execute("UPDATE KhachHang SET activeToken = '' WHERE MaKhachHang = '$userId'");
+                    $updateStatus = pdo_execute("UPDATE khachhang SET activeToken = '' WHERE MaKhachHang = '$userId'");
                     if (!boolval($updateStatus)) {
                         setFlashData('msg', 'Kích hoạt tài khoản thành công!');
                         setFlashData('msg_type', 'success');
@@ -222,9 +222,9 @@ if (isset($action)) {
             if (!empty($user)) {
                 setFlashData('user-details', $user);
                 $userDetails = getFlashData('user-details');
-                echo "<pre>";
-                print_r($_SESSION['user']['HoTen']);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($_SESSION['user']['HoTen']);
+                // echo "</pre>";
 
                 if (!empty($userDetails)) {
                     $old = $userDetails;
