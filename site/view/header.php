@@ -9,6 +9,7 @@
         echo !empty($data['pageTitle']) ? $data['pageTitle'] : 'Chợ Quê ONLINE';
         ?>
     </title>
+    <link rel="icon" href="../../content/img/cho-que-online_icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../../content/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../content/css/grid.css">

@@ -20,7 +20,7 @@
                         <div class="single-contact">
                             <i class="fa fa-mobile-alt"></i>
                             <div class="content content-phone">Số điện thoại:
-                                <span>0333 505 078</span>
+                                <span>0356 085 145</span>
                             </div>
                         </div>
                     </div>
