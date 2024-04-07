@@ -1,4 +1,8 @@
 <?php
+// Nếu CODE không tồn tại
+if (!defined('_CODE')) {
+    die('Access denied...');
+}
 include_once '../modal/category.php';
 include_once '../modal/product.php';
 include_once '../modal/function.php';

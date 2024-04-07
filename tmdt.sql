@@ -70,7 +70,7 @@ CREATE TABLE `DanhMuc` (
 
 INSERT INTO `DanhMuc` (`MaDanhMuc`, `TenDanhMuc`, `TrangThai`) VALUES
 (1, 'TRÁI CÂY VIỆT', 'Đang hoạt động'),
-(2, 'ĐẶC SẢN 3 MIỀN', 'Đang hoạt động'),
+(2, 'ĐẶC SẢN 3 MIỀN', 'Đang hoạt động')
 
 -- --------------------------------------------------------
 
@@ -84,7 +84,7 @@ CREATE TABLE `DonHang` (
   `HoTen` varchar(255) NOT NULL,
   `SoDienThoai` int(20) NOT NULL,
   `DiaChi` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULLchar(255) NOT NULL
+  `Email` varchar(255) NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -105,7 +105,9 @@ CREATE TABLE `KhachHang` (
   `DiaChi` varchar(100) DEFAULT NULL,
   `SDT` varchar(100) DEFAULT NULL,
   `Admin` int(1) NOT NULL DEFAULT 1,
-  `TrangThai` int(1) NOT NULL DEFAULT 1
+  `TrangThai` int(1) NOT NULL DEFAULT 1,
+  `activeToken` varchar(100) DEFAULT NULL,
+  `create_at` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -125,8 +127,8 @@ CREATE TABLE `SanPham` (
   `MaSanPham` int(10) NOT NULL,
   `TenSanPham` varchar(100) NOT NULL,
   `HinhAnh` text DEFAULT NULL,
-  `Gia` int(10) DEFAULT NULL,
-  `GiaKhuyenMai` int(10) DEFAULT NULL,
+  `Gia` DECIMAL(10,3) NOT NULL,
+  `GiaKhuyenMai` DECIMAL(10,3) NOT NULL,
   `MaDanhMuc` int(10) NOT NULL,
   `SoLuong` int(10) DEFAULT NULL,
   `MoTa` text DEFAULT NULL,
@@ -139,30 +141,35 @@ CREATE TABLE `SanPham` (
 --
 
 INSERT INTO `SanPham` (`MaSanPham`, `TenSanPham`, `HinhAnh`, `Gia`, `GiaKhuyenMai`, `MaDanhMuc`, `SoLuong`, `MoTa`, `Hot`, `TrangThai`) VALUES
-(5, 'Dâu tây', 'dau_tay.webp', 620000, 500000, 1, 100, NULL, 0, 'Đang hoạt động'),
-(6, 'Vải thiều sấy khô', 'vai-thieu-say-kho_NtpvlfoDGT.png', 450000, 400000, 1, 50, NULL, NULL, 'Đang hoạt động'),
-(7, 'Dưa hấu', 'duahau.jpg', 550000, 450000, 1, 50, NULL, 1, 'Đang hoạt động'),
-(8, 'Mận đỏ', 'mando.jpg', 400000, 350000, 1, 40, NULL, NULL, 'Đang hoạt động'),
-(9, 'Lê Đường Hà Giang', 'le-duong.png', 280000, 200000, 1, 30, NULL, 0, 'Đang hoạt động'),
-(10, 'Nho mẫu đơn hộp xanh', 'nhoxanh.png', 450000, 330000, 1, 30, NULL, NULL, 'Đang hoạt động'),
-(11, 'Mận seo tím', 'mantim.png', 600000, 550000, 1, 10, NULL, 1, 'Đang hoạt động'),
-(12, 'Nho đỏ', 'nho.png', 400000, 380000, 1, 30, NULL, NULL, 'Đang hoạt động'),
-(13, 'Đường phèn hoa cúc Tili 300gr', 'duong-phen-hoa-cuc.jpg', 300000, 280000, 2, 30, NULL, NULL, 'Đang hoạt động'),
-(14, 'Trà đậu đen gạo lứt rang Tili 680gr', '.tra-dau-den-gao-lut-rang-tili-680gr_6v6ISA2NHp.jpg', 400000, 370000, 2, 40, NULL, 1, 'Đang hoạt động'),
-(15, 'Trà ngũ cốc Tili 450gr', '.tra-ngu-coc-tili-450gr_sAIrmDi02L.jpg', 450000, 360000, 2, 50, NULL, NULL, 'Đang hoạt động'),
-(16, 'Thập cẩm hạt Tili 400gr', 'thap-cam-hat-tili-400gr_K91lQA9NFw.jpg', 300000, 240000, 2, 30, NULL, 1, 'Đang hoạt động'),
-(22, 'Xoài cát hòa lộc', 'xoai-cat.jpg', 400000, 350000, 1, 30, NULL, NULL, 'Đang hoạt động'),
-(23, 'Cherry', 'nu_vay_6.webp', 350000, 250000, 1, NULL, NULL, NULL, 'Đang hoạt động'),
-(24, 'Thanh long', 'thanhlong.png', 350000, 200000, 1, 30, NULL, NULL, 'Đang hoạt động'),
-(25, 'Táo sấy dẻo Tili 300gr', '.tao-say-deo-tili-300gr_Blp8wN1D3s.jpg', 500000, 350000, 1, 20, NULL, NULL, 'Đang hoạt động'),
-(26, 'Hạt dẻ cười nguyên vỏ Tili 500gr', 'hat-de-cuoi-nguyen-vo-tili-500gr_JBTgtkNSYw.jpg', 400000, 300000, 2, 10, NULL, NULL, 'Đang hoạt động'),
-(27, 'Đậu phộng rang ớt tỏi Tili 300gr', '.dau-phong-rang-ot-toi-tili-300gr_upt9J9kWu0.jpg', 300000, 150000, 2, 30, NULL, NULL, 'Đang hoạt động');
+(5, 'Dâu tây', 'dau_tay.webp', 180, 160, 1, 100, NULL, 0, 'Đang hoạt động'),
+(6, 'Vải thiều sấy khô', 'vai-thieu-say-kho_NtpvlfoDGT.png', 56, 50, 1, 50, NULL, NULL, 'Đang hoạt động'),
+(7, 'Dưa hấu', 'duahau.jpg', 30, 20, 1, 50, NULL, 1, 'Đang hoạt động'),
+(8, 'Roi đỏ', 'roi.webp', 50, 45, 1, 40, NULL, NULL, 'Đang hoạt động'),
+(9, 'Lê Đường Hà Giang', 'le-duong.png', 280, 200, 1, 30, NULL, 0, 'Đang hoạt động'),
+(10, 'Nho mẫu đơn hộp xanh', 'nhoxanh.png', 336, 330, 1, 30, NULL, NULL, 'Đang hoạt động'),
+(11, 'Mận seo tím', 'mantim.png', 600, 550, 1, 10, NULL, 1, 'Đang hoạt động'),
+(12, 'Nho đỏ', 'nho.png', 77, 70, 1, 30, NULL, NULL, 'Đang hoạt động'),
+(13, 'Đường phèn hoa cúc Tili 300gr', 'duong-phen-hoa-cuc.jpg', 59, 50, 2, 30, NULL, NULL, 'Đang hoạt động'),
+(14, 'Trà đậu đen gạo lứt rang Tili 680gr', '.tra-dau-den-gao-lut-rang-tili-680gr_6v6ISA2NHp.jpg', 140, 120, 2, 40, NULL, 1, 'Đang hoạt động'),
+(15, 'Trà ngũ cốc Tili 450gr', '.tra-ngu-coc-tili-450gr_sAIrmDi02L.jpg', 140, 120, 2, 50, NULL, NULL, 'Đang hoạt động'),
+(16, 'Thập cẩm hạt Tili 400gr', 'thap-cam-hat-tili-400gr_K91lQA9NFw.jpg', 149, 139, 2, 30, NULL, 1, 'Đang hoạt động'),
+(22, 'Xoài cát hòa lộc', 'xoai-cat.jpg', 400, 350, 1, 30, NULL, NULL, 'Đang hoạt động'),
+(23, 'Cherry', 'nu_vay_6.webp', 362, 300, 1, NULL, NULL, NULL, 'Đang hoạt động'),
+(24, 'Thanh long', 'thanhlong.png', 60, 40, 1, 30, NULL, NULL, 'Đang hoạt động'),
+(25, 'Táo sấy dẻo Tili 300gr', '.tao-say-deo-tili-300gr_Blp8wN1D3s.jpg', 500, 350, 1, 20, NULL, NULL, 'Đang hoạt động'),
+(26, 'Hạt dẻ cười nguyên vỏ Tili 500gr', 'hat-de-cuoi-nguyen-vo-tili-500gr_JBTgtkNSYw.jpg', 180, 160, 2, 10, NULL, NULL, 'Đang hoạt động'),
+(27, 'Đậu phộng rang ớt tỏi Tili 300gr', '.dau-phong-rang-ot-toi-tili-300gr_upt9J9kWu0.jpg', 72, 70, 2, 30, NULL, NULL, 'Đang hoạt động');
 
 --
--- Indexes for dumped tables
---
+--  Table structure for table `loginotken`
 
---
+CREATE TABLE `logintoken` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `token` varchar(100),
+  `created_at` date
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- Indexes for table `BinhLuan`
 --
 ALTER TABLE `BinhLuan`
@@ -188,7 +195,7 @@ ALTER TABLE `DanhMuc`
 -- Indexes for table `DonHang`
 --
 ALTER TABLE `DonHang`
-  ADD PRIMARY KEY (`MaDonHang`),
+  ADD PRIMARY KEY (`MaDonHang`);
 
 --
 -- Indexes for table `KhachHang`
@@ -268,6 +275,7 @@ ALTER TABLE `SanPham`
   ADD CONSTRAINT `sanpham_ibfk_1` FOREIGN KEY (`MaDanhMuc`) REFERENCES `DanhMuc` (`MaDanhMuc`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE `logintoken`
+  ADD PRIMARY KEY (`id`),
+  ADD CONSTRAINT `logintoken_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `KhachHang` (`MaKhachHang`);

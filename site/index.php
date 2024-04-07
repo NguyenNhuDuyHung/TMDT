@@ -4,6 +4,7 @@ include_once '../modal/product.php';
 include_once '../modal/function.php';
 include_once '../modal/database.php';
 include_once '../modal/user.php';
+include_once './config.php';
 
 include_once '../modal/phpMailer/PHPMailer.php';
 include_once '../modal/phpMailer/Exception.php';

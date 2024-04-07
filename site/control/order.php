@@ -1,4 +1,8 @@
 <?php
+// Nếu CODE không tồn tại
+if (!defined('_CODE')) {
+    die('Access denied...');
+}
 extract($_REQUEST);
 // sendMail('duyhung03112004@gmail.com', 'hello world', 'localhost');
 

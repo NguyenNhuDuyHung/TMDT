@@ -1,4 +1,8 @@
 <?php
+// Nếu CODE không tồn tại
+if (!defined('_CODE')) {
+    die('Access denied...');
+}
 include_once '../modal/category.php';
 extract($_REQUEST);
 if (isset($action)) {
