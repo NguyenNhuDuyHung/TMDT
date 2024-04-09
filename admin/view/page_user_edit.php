@@ -9,30 +9,30 @@
             <div class="col-md-12">
                 <div>
                     <label class="form-label" for="">Tên khách hàng</label class="form-label">
-                    <input class="form-control" type="text" name="name" value="<?= $user['HoTen'] ?>">
+                    <input class="form-control" type="text" name="name" value="<?= $userQuery['HoTen'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Email</label>
-                    <input class="form-control" type="email" name="email" value="<?= $user['Email'] ?>">
+                    <input class="form-control" type="email" name="email" value="<?= $userQuery['Email'] ?>">
 
                 </div>
                 <div>
                     <label class="form-label" for="">Địa chỉ</label class="form-label">
-                    <input class="form-control" type="text" name="address" value="<?= $user['DiaChi'] ?>">
+                    <input class="form-control" type="text" name="address" value="<?= $userQuery['DiaChi'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Số điện thoại</label class="form-label">
-                    <input class="form-control" type="text" name="phone" value="<?= $user['SDT'] ?>">
+                    <input class="form-control" type="text" name="phone" value="<?= $userQuery['SDT'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Mật khẩu</label class="form-label">
-                    <input class="form-control" type="password" name="password" value="<?= $user['MatKhau'] ?>">
+                    <input class="form-control" type="password" name="password" value="<?= $userQuery['MatKhau'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Cấp quyền admin</label class="form-label">
                     <div class="form-control">
-                        <input type="radio" name="admin" value="1" <?php if ($user['Admin'] == 1) echo 'checked' ?>> Có
-                        <input type="radio" name="admin" value="0" <?php if ($user['Admin'] == 0) echo 'checked' ?>> Không
+                        <input type="radio" name="admin" value="1" <?php if ($userQuery['Admin'] == 1) echo 'checked' ?>> Có
+                        <input type="radio" name="admin" value="0" <?php if ($userQuery['Admin'] == 0) echo 'checked' ?>> Không
                     </div>
                 </div>
 

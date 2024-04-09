@@ -223,6 +223,7 @@ if (isset($action)) {
             $categoryList = category_list();
             $filterAll = filter();
             $user = user_one($id);
+            // print_r($_SESSION['user']);
             if (!empty($user)) {
                 setFlashData('user-details', $user);
                 $userDetails = getFlashData('user-details');
@@ -280,7 +281,7 @@ if (isset($action)) {
                 }
 
                 // Validate password_confirm: phải giống password, bắt buộc phải nhập
-                if(!empty($filterAll['password'])) {
+                if (!empty($filterAll['password'])) {
                     if (empty($filterAll['password_confirm'])) {
                         $error['password_confirm']['required'] = 'Vui lòng nhập lại mật khẩu';
                     } else {
@@ -296,7 +297,7 @@ if (isset($action)) {
                     $dateUpdate = date('Y-m-d H:i:s');
                     $password = password_hash($filterAll['password'], PASSWORD_DEFAULT);
                     $checkRegister = update_user($fullname, $email, $phone, $password, $address, $dateUpdate, $id);
-                    print_r($checkRegister);
+                    // print_r($checkRegister);
                     if (!boolval($checkRegister)) {
                         setFlashData('msg', 'Cập nhật thành công');
                         setFlashData('msg_type', 'success');
@@ -317,7 +318,8 @@ if (isset($action)) {
             $errors = getFlashData('error');
             $old = getFlashData('old-info');
 
-
+            $userQuery = pdo_query_one("SELECT * FROM KhachHang WHERE MaKhachHang = '$id'");
+            // print_r($userQuery);
 
 
             include_once 'view/header.php';

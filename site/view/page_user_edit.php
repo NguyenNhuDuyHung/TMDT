@@ -12,7 +12,7 @@
                     <div class="form-group mg-form">
                         <label for="Email">Họ và tên</label>
                         <input name="fullname" type="fullname" class="form-control" placeholder="Họ và tên" value="<?php
-                                                                                                                    echo $_SESSION['user']['HoTen'];
+                                                                                                                    echo $userQuery['HoTen'];;
                                                                                                                     ?>">
                         <?php
                         // echo (!empty($errors['fullname'])) ? '<span class="error">' .reset($errors['fullname']). '</span>' : null;
@@ -26,7 +26,7 @@
                     <div class="form-group mg-form">
                         <label for="Email">Email</label>
                         <input name="email" type="email" class="form-control" placeholder="Địa chỉ email" value="<?php
-                                                                                                                    echo $_SESSION['user']['Email'];
+                                                                                                                    echo $userQuery['Email'];
                                                                                                                     ?>">
                         <?php
                         // echo (!empty($errors['fullname'])) ? '<span class="error">' .reset($errors['fullname']). '</span>' : null;
@@ -40,7 +40,7 @@
                     <div class="form-group mg-form">
                         <label for="">Số điện thoại</label>
                         <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" value="<?php
-                                                                                                                echo $_SESSION['user']['SDT'];
+                                                                                                                echo $userQuery['SDT'];
                                                                                                                 ?>">
                         <?php
                         // echo (!empty($errors['fullname'])) ? '<span class="error">' .reset($errors['fullname']). '</span>' : null;
@@ -54,7 +54,7 @@
                     <div class="form-group mg-form">
                         <label for="">Địa chỉ</label>
                         <input name="address" type="text" class="form-control" placeholder="Địa chỉ" value="<?php
-                                                                                                            echo $_SESSION['user']['DiaChi'];
+                                                                                                            echo $userQuery['DiaChi'];
                                                                                                             ?>">
                         <?php
                         // echo (!empty($errors['fullname'])) ? '<span class="error">' .reset($errors['fullname']). '</span>' : null;

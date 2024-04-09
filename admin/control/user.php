@@ -1,8 +1,4 @@
 <?php
-// Nếu CODE không tồn tại
-if (!defined('_CODE')) {
-    die('Access denied...');
-}
 extract($_REQUEST);
 if (isset($action)) {
     switch ($action) {
@@ -26,6 +22,8 @@ if (isset($action)) {
                 setFlashData('msg', 'Sửa thành công');
                 setFlashData('msg_type', 'success');
             }
+            $userQuery = pdo_query_one("SELECT * FROM KhachHang WHERE MaKhachHang = '$id'");
+
             $msg = getFlashData('msg');
             $msgType = getFlashData('msg_type');
             include_once 'view/template_header.php';

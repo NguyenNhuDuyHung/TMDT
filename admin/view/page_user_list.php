@@ -17,7 +17,7 @@
                 <tr>
                     <td><?= $user['MaKhachHang'] ?></td>
                     <td><?= $user['HoTen'] ?></td>
-                    <td><?= $user['Email'] ?> đ</td>
+                    <td><?= $user['Email'] ?></td>
                     <td><?= $user['DiaChi'] ?></td>
                     <td><?= $user['SDT'] ?></td>
                     <td><?= $user['Admin'] ?></td>

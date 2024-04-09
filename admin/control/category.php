@@ -1,8 +1,4 @@
 <?php
-// Nếu CODE không tồn tại
-if (!defined('_CODE')) {
-    die('Access denied...');
-}
 include_once '../modal/category.php';
 extract($_REQUEST);
 if (isset($action)) {
@@ -25,6 +21,9 @@ if (isset($action)) {
             break;
         case 'editCate':
             $dm = get_category_one($id);
+            $categoryQuery = pdo_query_one("SELECT * FROM danhmuc WHERE MaDanhMuc    = '$id'");
+            // print_r($categoryQuery);
+
             if (isset($editCategory_submit)) {
                 category_edit($name, $_FILES['image']['name'], $status, $id);
                 move_uploaded_file($_FILES['image']['tmp_name'], '../content/img/' . $_FILES['image']['name']);

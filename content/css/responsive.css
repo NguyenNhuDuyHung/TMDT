@@ -7,4 +7,68 @@
     .container-xl {
         max-width: 1200px;
     }
+
+    .home__slider {
+        max-width: 1200px;
+    }
+
+    .slick-slider img {
+        max-width: 1200px;
+    }
+}
+
+@media (min-width: 1023px) {
+    .hide {
+        display: none;
+    }
+
+    .navbar__logo-wrap {
+        width: 110px;
+        height: 110px;
+    }
+
+    .slick-product {
+        width: 295px;
+    }
+    
+}
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+    .hide-on-mobile-tablet {
+        display: none;
+    }
+
+    .navbar__logo-wrap {
+        width: 110px;
+        height: 110px;
+    }
+
+    .navbar__search-wrap {
+        width: 100%;
+    }
+
+    .slick-product {
+        width: 235px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 740px) and (max-width: 1023px) {
+    .hide-on-tablet {
+        display: none;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 739px) {
+    .hide-on-mobile {
+        display: none;
+    }
+
+    .navbar__logo-wrap {
+        width: 70px;
+        height: 70px;
+    }
 }

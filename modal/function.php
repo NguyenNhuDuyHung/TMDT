@@ -168,6 +168,11 @@ function oldInfo($fileName, $oldData, $default = null)
     return (!empty($oldData[$fileName])) ? $oldData[$fileName] : $default;
 }
 
+function newInfo($fileName, $newData, $default = null)
+{
+    return (!empty($newData[$fileName])) ? $newData[$fileName] : $default;
+}
+
 
 // Hàm gán session
 function setSession($key, $value)

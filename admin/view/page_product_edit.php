@@ -9,14 +9,14 @@
             <div class="col-md-6">
                 <div>
                     <label class="form-label" for="">Tên sản phẩm</label class="form-label">
-                    <input class="form-control" type="text" name="name" value="<?= $sp['TenSanPham'] ?>">
+                    <input class="form-control" type="text" name="name" value="<?= $productQuery['TenSanPham'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Danh Mục</label>
                     <select class="form-select" name="category">
                         <?php
                         foreach ($dsdm as $dm) {
-                            if ($dm['MaDanhMuc'] == $sp['MaDanhMuc']) {
+                            if ($dm['MaDanhMuc'] == $productQuery['MaDanhMuc']) {
                                 echo '<option selected value="' . $dm['MaDanhMuc'] . '">' . $dm['TenDanhMuc'] . '</option>';
                             } else {
                                 echo '<option value="' . $dm['MaDanhMuc'] . '">' . $dm['TenDanhMuc'] . '</option>';
@@ -28,15 +28,15 @@
                 </div>
                 <div>
                     <label class="form-label" for="">Giá</label class="form-label">
-                    <input class="form-control" type="number" name="price" value="<?= $sp['Gia'] ?>">
+                    <input class="form-control" type="number" name="price" value="<?= $productQuery['Gia'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Giá khuyến mãi</label class="form-label">
-                    <input class="form-control" type="number" name="sale" value="<?= $sp['GiaKhuyenMai'] ?>">
+                    <input class="form-control" type="number" name="sale" value="<?= $productQuery['GiaKhuyenMai'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Mô tả</label class="form-label">
-                    <textarea class="form-control" name="description" id="" cols="30" rows="10" value="<?= $sp['MoTa'] ?>"></textarea>
+                    <textarea class="form-control" name="description" id="" cols="30" rows="10" value="<?= $productQuery['MoTa'] ?>"></textarea>
                 </div>
 
             </div>
@@ -44,24 +44,24 @@
                 <div>
                     <label class="form-label" for="">Hình ảnh</label class="form-label">
                     <input class="form-control" type="file" name="image">
-                    <img class="my-3" src="../content/img/<?= $sp['HinhAnh'] ?>" width="200" height="250" alt="">
+                    <img class="my-3" src="../content/img/<?= $productQuery['HinhAnh'] ?>" width="200" height="250" alt="">
                 </div>
                 <div>
                     <label class="form-label" for="">Số Lượng</label class="form-label">
-                    <input class="form-control" type="number" name="quantity" value="<?= $sp['SoLuong'] ?>">
+                    <input class="form-control" type="number" name="quantity" value="<?= $productQuery['SoLuong'] ?>">
                 </div>
                 <div>
                     <label class="form-label" for="">Sản phẩm nổi bật</label class="form-label">
                     <div class="form-control">
-                        <input type="radio" name="hot" value="1" <?php if ($sp['Hot'] == 1) echo 'checked' ?>> Có
-                        <input type="radio" name="hot" value="0" <?php if ($sp['Hot'] == 0) echo 'checked' ?>> Không
+                        <input type="radio" name="hot" value="1" <?php if ($productQuery['Hot'] == 1) echo 'checked' ?>> Có
+                        <input type="radio" name="hot" value="0" <?php if ($productQuery['Hot'] == 0) echo 'checked' ?>> Không
                     </div>
                 </div>
                 <div>
                     <label class="form-label" for="">Trạng thái</label class="form-label">
                     <select class="form-select" name="status" id="">
-                        <option value="Đang hoạt động" <?php if ($sp['TrangThai'] == 'Đang hoạt động') echo 'selected' ?>>Đang hoạt động</option>
-                        <option value="Tạm ngưng" <?php if ($sp['TrangThai'] == 'Tạm ngưng') echo 'selected' ?>>Tạm ngưng</option>
+                        <option value="Đang hoạt động" <?php if ($productQuery['TrangThai'] == 'Đang hoạt động') echo 'selected' ?>>Đang hoạt động</option>
+                        <option value="Tạm ngưng" <?php if ($productQuery['TrangThai'] == 'Tạm ngưng') echo 'selected' ?>>Tạm ngưng</option>
                     </select>
                 </div>
             </div>

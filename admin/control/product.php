@@ -1,8 +1,4 @@
 <?php
-// Nếu CODE không tồn tại
-if (!defined('_CODE')) {
-    die('Access denied...');
-}
 extract($_REQUEST);
 if (isset($action)) {
     switch ($action) {
@@ -34,7 +30,7 @@ if (isset($action)) {
             header('location: ?modules=product&action=productlist');
             break;
         case 'edit':
-            $sp = product_one($id);
+            $product = product_one($id);
             $dsdm = category_list();
             if (isset($editProduct_submit)) {
                 if ($_FILES['image']['name'] != null) {
@@ -44,7 +40,7 @@ if (isset($action)) {
                     setFlashData('msg_type', 'success');
                     // header('location: ?modules=product&action=edit&id=' . $id);
                 } else {
-                    product_edit($id, $name, $sp['HinhAnh'], $price, $sale, $category, $quantity, $description, $hot, $status);
+                    product_edit($id, $name, $product['HinhAnh'], $price, $sale, $category, $quantity, $description, $hot, $status);
                     setFlashData('msg', 'Sửa thành công');
                     setFlashData('msg_type', 'success');
                     // header('location: ?modules=product&action=edit&id=' . $id);
@@ -52,7 +48,9 @@ if (isset($action)) {
             }
             $msg = getFlashData('msg');
             $msgType = getFlashData('msg_type');
-            // print_r($sp);
+
+            $productQuery = pdo_query_one("SELECT * FROM sanpham WHERE MaSanPham = '$id'");
+            // print_r($product);
             include_once 'view/template_header.php';
             include_once 'view/page_product_edit.php';
             break;

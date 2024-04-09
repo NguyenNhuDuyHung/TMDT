@@ -1,4 +1,4 @@
-<section class="section awe-section-1 mt-3">
+<section class="section awe-section-1 mt-3 hide-on-mobile-tablet">
     <div class="container section px-md-0 mt-lg-0 mt-3">
         <div class="section__slider section_slider clearfix">
             <div class="home__slider home-slider d-flex align-items-center slick-initialized slick-dotted">

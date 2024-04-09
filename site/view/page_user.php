@@ -1,4 +1,10 @@
 <div class="container my-3">
+    <?php
+    if (!empty($msg)) {
+        getMsg($msg, $msgType);
+    }
+    ?>
+
     <div class="row">
         <div class="col-md-12">
             <h4 class="text-center">THÔNG TIN KHÁCH HÀNG</h4>
