@@ -50,10 +50,9 @@ if (isset($action)) {
                     if (!boolval($checkorder)) {
                         $subject = 'Xác nhận đơn hàng';
                         $content = 'Xin chào ' . $filterAll['fullname'] . '.</>' . 'Đây là đơn hàng của bạn: ' . '</br>';
-
                         $sendMail = sendMail($filterAll['email'], $subject, $content);
                         if ($sendMail) {
-                            setFlashData('msg', 'Đăng ký thành công! Vui lòng kiểm tra Email để xác nhận đơn hàng');
+                            setFlashData('msg', 'Đặt hàng thành công! Vui lòng kiểm tra Email để xác nhận đơn hàng');
                             setFlashData('msg_type', 'success');
                         } else {
                             setFlashData('msg', 'Hệ thống đang gặp sự cố, vui lòng thử lại sau!');

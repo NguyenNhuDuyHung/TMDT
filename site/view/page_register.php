@@ -79,7 +79,7 @@
                     </div>
                     <div class="form-group mg-form">
                         <label for="Password">Mật khẩu</label>
-                        <input name="password" type="text" class="form-control" placeholder="Mật khẩu" value="<?php
+                        <input name="password" type="password" class="form-control" placeholder="Mật khẩu" value="<?php
                                                                                                             if (!empty($errors)) {
                                                                                                                 // echo (!empty($old['fullname'])) ? $old['fullname'] : null;
                                                                                                                 echo oldInfo('password', $old);
@@ -96,7 +96,7 @@
                     </div>
                     <div class="form-group mg-form">
                         <label for="Password">Nhập lại mật khẩu</label>
-                        <input name="password_confirm" type="text" class="form-control" placeholder="Nhập lại mật khẳu" value="<?php
+                        <input name="password_confirm" type="password" class="form-control" placeholder="Nhập lại mật khẳu" value="<?php
                                                                                                             if (!empty($errors)) {
                                                                                                                 // echo (!empty($old['fullname'])) ? $old['fullname'] : null;
                                                                                                                 echo oldInfo('password_confirm', $old);

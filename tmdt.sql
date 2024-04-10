@@ -70,7 +70,7 @@ CREATE TABLE `DanhMuc` (
 
 INSERT INTO `DanhMuc` (`MaDanhMuc`, `TenDanhMuc`, `TrangThai`) VALUES
 (1, 'TRÁI CÂY VIỆT', 'Đang hoạt động'),
-(2, 'ĐẶC SẢN 3 MIỀN', 'Đang hoạt động')
+(2, 'ĐẶC SẢN 3 MIỀN', 'Đang hoạt động');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,7 @@ CREATE TABLE `KhachHang` (
   `HoTen` varchar(100) NOT NULL,
   `DiaChi` varchar(100) DEFAULT NULL,
   `SDT` varchar(100) DEFAULT NULL,
-  `Admin` int(1) NOT NULL DEFAULT 1,
+  `Admin` int(1) NOT NULL DEFAULT 0,
   `TrangThai` int(1) NOT NULL DEFAULT 1,
   `activeToken` varchar(100) DEFAULT NULL,
   `create_at` date
@@ -115,7 +115,7 @@ CREATE TABLE `KhachHang` (
 --
 
 INSERT INTO `KhachHang` (`MaKhachHang`, `Email`, `MatKhau`, `HoTen`, `DiaChi`, `SDT`, `Admin`, `TrangThai`) VALUES
-(1, 'duyhung03112004@gmail.com', '1234567890', 'Nguyễn Như Duy Hưng', 'Hà Nội', '0356085145', 1, 1)
+(1, 'duyhung03112004@gmail.com', '1234567890', 'Nguyễn Như Duy Hưng', 'Hà Nội', '0356085145', 1, 1);
 
 -- --------------------------------------------------------
 
