@@ -116,6 +116,9 @@
                                                     <a href="?modules=user&action=info">Tài khoản của tôi</a>
                                                 </li>
                                                 <li class="header__navbar-user-item header__navbar-user-item--separate">
+                                                    <a href="?modules=user&action=order">Đơn hàng</a>
+                                                </li>
+                                                <li class="header__navbar-user-item header__navbar-user-item--separate">
                                                     <a href="?modules=user&action=logout">Đăng xuất</a>
                                                 </li>
                                             </ul>

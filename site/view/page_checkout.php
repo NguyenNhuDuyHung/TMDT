@@ -1,5 +1,41 @@
 <section class="section section-cart">
     <div class="container section-cart-container">
+        <div class="cart-main">
+            <div class="checkout-product">
+                <?php if (isset($_SESSION['cartUser'])) : ?>
+                    <?php $count = 0; ?>
+                    <?php foreach ($_SESSION['cartUser'] as $item) : ?>
+                        <?php
+                        $count = number_format(ceil($item['SL'] * $item['Gia']) + $count, 3, '.', '.')
+                        ?>
+                        <div class="checkout-content-product">
+                            <div class="cart-img-product">
+                                <img src="../../content/img/<?= $item['HinhAnh'] ?>" alt="">
+                            </div>
+                            <div class="product__info-left-details product-buttons-details">
+                                <h2><?= $item['TenSanPham'] ?></h2>
+                                <div class="product-buttons-details-wrap">
+                                    <div class="input__quantity-btn">
+                                        <div class="input__quantity-btn">
+                                            <h4 style="font-weight: 400;">x <?= $item['SL'] ?></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cart-sum-title">
+                                <h4>Thành tiền: <?= number_format(ceil($item['SL'] * $item['Gia']), 3, '.', '.'); ?>₫</h4>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <div class="checkout-price" style="display: flex; justify-content: flex-end; padding: 20px 30px 20px 0 ;">
+                    <h4>Tổng tiền: <?= $count ?>₫</h4>
+                </div>
+            </div>
+        </div>
+
+
         <div class="form-container">
             <h2 class="form-title">Thông tin người nhận hàng</h2>
             <div class="form-checkout">

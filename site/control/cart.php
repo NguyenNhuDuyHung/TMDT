@@ -1,8 +1,4 @@
 <?php
-// Nếu CODE không tồn tại
-if (!defined('_CODE')) {
-    die('Access denied...');
-}
 extract($_REQUEST);
 if (isset($action)) {
     switch ($action) {
@@ -63,6 +59,10 @@ if (isset($action)) {
             break;
         case 'list':
             $data = ['pageTitle' => 'Giỏ hàng'];
+
+            // echo '<pre>';
+            // print_r($_SESSION['cartUser']);
+            // echo '</pre>';
 
             $categoryList = category_list();
             include_once 'view/header.php';

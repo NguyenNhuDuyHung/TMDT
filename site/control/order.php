@@ -9,6 +9,15 @@ extract($_REQUEST);
 if (isset($action)) {
     switch ($action) {
         case 'checkout':
+            // print_r($_SESSION['user']['MaKhachHang']);
+            // echo '<pre>';
+            // print_r($_SESSION['cartUser']);
+            // echo '</pre>';
+
+
+
+            // echo count($_SESSION['cartUser']);           
+
             $data = ['pageTitle' => 'Thanh toán'];
 
             $categoryList = category_list();
@@ -46,7 +55,7 @@ if (isset($action)) {
                 // Xử lý insert database
                 if (empty($error)) {
                     $dateOrder = date('Y-m-d H:i:s');
-                    $checkorder = order($fullname, $email, $phone, $address, $dateOrder);
+                    $checkorder = order($_SESSION['user']['MaKhachHang'], $fullname, $email, $phone, $address, $dateOrder);
                     if (!boolval($checkorder)) {
                         $subject = 'Xác nhận đơn hàng';
                         $content = 'Xin chào ' . $filterAll['fullname'] . '.</>' . 'Đây là đơn hàng của bạn: ' . '</br>';
@@ -54,6 +63,17 @@ if (isset($action)) {
                         if ($sendMail) {
                             setFlashData('msg', 'Đặt hàng thành công! Vui lòng kiểm tra Email để xác nhận đơn hàng');
                             setFlashData('msg_type', 'success');
+
+                            $idOrder = pdo_query_value('SELECT MaDonHang FROM donhang WHERE MaKhachHang = ' . $_SESSION['user']['MaKhachHang']);
+                            $userId = $_SESSION['user']['MaKhachHang'];
+                            // echo $idOrder;
+
+                            foreach ($_SESSION['cartUser'] as $user) {
+                                $sql = "INSERT INTO chitietdonhang(MaKhachHang, MaDonHang, MaSanPham, SoLuong, GiaBan) VALUES ('$userId' , '$idOrder', '$user[MaSanPham]', '$user[SL]', '$user[Gia]')";
+                                pdo_execute($sql);
+                            }
+                            header('location: ?modules=order&action=success');
+
                         } else {
                             setFlashData('msg', 'Hệ thống đang gặp sự cố, vui lòng thử lại sau!');
                             setFlashData('msg_type', 'danger');
@@ -76,6 +96,14 @@ if (isset($action)) {
             }
             include_once 'view/header.php';
             include_once 'view/page_checkout.php';
+            include_once 'view/footer.php';
+            break;
+
+        case 'success':
+            $categoryList = category_list();
+
+            include_once 'view/header.php';
+            include_once 'view/page_checkout_success.php';
             include_once 'view/footer.php';
             break;
     }

@@ -23,29 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `BinhLuan`
---
-
-CREATE TABLE `BinhLuan` (
-  `MaBinhLuan` int(11) NOT NULL,
-  `NoiDung` text NOT NULL,
-  `MaKhachHang` int(11) NOT NULL,
-  `MaSanPham` int(11) NOT NULL,
-  `NgayBinhLuan` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `ChiTietDonHang`
 --
 
 CREATE TABLE `ChiTietDonHang` (
   `MaChiTietDH` int(11) NOT NULL,
+  `MaKhachHang` int(11) NOT NULL,
   `MaDonHang` int(11) NOT NULL,
   `MaSanPham` int(11) NOT NULL,
   `SoLuong` int(11) NOT NULL,
-  `GiaBan` int(11) NOT NULL
+  `GiaBan` DECIMAL(10,3) NOT NULL,
+  `TrangThai` varchar(255) NOT NULL DEFAULT 'Đã đặt hàng'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -80,6 +68,7 @@ INSERT INTO `DanhMuc` (`MaDanhMuc`, `TenDanhMuc`, `TrangThai`) VALUES
 
 CREATE TABLE `DonHang` (
   `MaDonHang` int(11) NOT NULL,
+  `MaKhachHang` int(11) NOT NULL,
   `NgayDatHang` datetime NOT NULL DEFAULT current_timestamp(),
   `HoTen` varchar(255) NOT NULL,
   `SoDienThoai` int(20) NOT NULL,
@@ -170,20 +159,14 @@ CREATE TABLE `logintoken` (
   `created_at` date
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Indexes for table `BinhLuan`
---
-ALTER TABLE `BinhLuan`
-  ADD PRIMARY KEY (`MaBinhLuan`),
-  ADD KEY `MaKhachHang` (`MaKhachHang`),
-  ADD KEY `MaSanPham` (`MaSanPham`);
-
 --
 -- Indexes for table `ChiTietDonHang`
 --
 ALTER TABLE `ChiTietDonHang`
   ADD PRIMARY KEY (`MaChiTietDH`),
   ADD KEY `MaDonHang` (`MaDonHang`),
-  ADD KEY `MaSanPham` (`MaSanPham`);
+  ADD KEY `MaSanPham` (`MaSanPham`),
+  ADD KEY `MaKhachHang` (`MaKhachHang`);
 
 --
 -- Indexes for table `DanhMuc`
@@ -195,7 +178,8 @@ ALTER TABLE `DanhMuc`
 -- Indexes for table `DonHang`
 --
 ALTER TABLE `DonHang`
-  ADD PRIMARY KEY (`MaDonHang`);
+  ADD PRIMARY KEY (`MaDonHang`),
+  ADD KEY `MaKhachHang` (`MaKhachHang`);
 
 --
 -- Indexes for table `KhachHang`
@@ -209,16 +193,6 @@ ALTER TABLE `KhachHang`
 ALTER TABLE `SanPham`
   ADD PRIMARY KEY (`MaSanPham`),
   ADD KEY `MaDanhMuc` (`MaDanhMuc`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `BinhLuan`
---
-ALTER TABLE `BinhLuan`
-  MODIFY `MaBinhLuan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ChiTietDonHang`
@@ -251,22 +225,12 @@ ALTER TABLE `SanPham`
   MODIFY `MaSanPham` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `BinhLuan`
---
-ALTER TABLE `BinhLuan`
-  ADD CONSTRAINT `binhluan_ibfk_1` FOREIGN KEY (`MaKhachHang`) REFERENCES `KhachHang` (`MaKhachHang`),
-  ADD CONSTRAINT `binhluan_ibfk_2` FOREIGN KEY (`MaSanPham`) REFERENCES `SanPham` (`MaSanPham`);
-
---
 -- Constraints for table `ChiTietDonHang`
 --
 ALTER TABLE `ChiTietDonHang`
   ADD CONSTRAINT `chitietdonhang_ibfk_1` FOREIGN KEY (`MaDonHang`) REFERENCES `DonHang` (`MaDonHang`),
-  ADD CONSTRAINT `chitietdonhang_ibfk_2` FOREIGN KEY (`MaSanPham`) REFERENCES `SanPham` (`MaSanPham`);
+  ADD CONSTRAINT `chitietdonhang_ibfk_2` FOREIGN KEY (`MaSanPham`) REFERENCES `SanPham` (`MaSanPham`),
+  ADD CONSTRAINT `chitietdonhang_ibfk_3` FOREIGN KEY (`MaKhachHang`) REFERENCES `DonHang` (`MaKhachHang`);
 
 --
 -- Constraints for table `SanPham`
@@ -279,3 +243,6 @@ COMMIT;
 ALTER TABLE `logintoken`
   ADD PRIMARY KEY (`id`),
   ADD CONSTRAINT `logintoken_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `KhachHang` (`MaKhachHang`);
+
+ALTER TABLE `DonHang`
+  ADD CONSTRAINT `donhang_ibfk_1` FOREIGN KEY (`MaKhachHang`) REFERENCES `KhachHang` (`MaKhachHang`);

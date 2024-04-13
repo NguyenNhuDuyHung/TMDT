@@ -39,10 +39,10 @@
                 <i class="bi bi-people-fill me-2"></i>
                 <a class="text-decoration-none text-black" href="?modules=user&action=userlist"> Quản lý người dùng</a>
             </p>
-            <!-- <p>
+            <p>
                 <i class="bi bi-cart-fill me-2"></i>
                 <a class="text-decoration-none text-black" href="?modules=order&action=orderlist"> Quản lý đơn hàng</a>
-            </p> -->
+            </p>
             <hr>
             <div class="text-center">
                 <a href="../../site/?modules=user&action=logout" class="btn btn-success">Đăng xuất</a>

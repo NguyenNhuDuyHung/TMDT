@@ -63,7 +63,7 @@ function product_edit($id, $name, $image, $price, $sale, $category, $quantity, $
     return pdo_execute($sql, $name, $image, $price, $sale, $category, $quantity, $description, $hot, $status, $id);
 }
 
-function order($fullname, $email, $phone, $address, $date) {
-    $sql = "INSERT INTO donhang(HoTen, Email, SoDienThoai, DiaChi, NgayDatHang) VALUES (?, ?, ?, ?, ?)";
-    return pdo_query($sql, $fullname, $email, $phone, $address, $date);
+function order($id ,$fullname, $email, $phone, $address, $date) {
+    $sql = "INSERT INTO donhang(MaKhachHang ,HoTen, Email, SoDienThoai, DiaChi, NgayDatHang) VALUES (?, ?, ?, ?, ?, ?)";
+    return pdo_query($sql, $id, $fullname, $email, $phone, $address, $date);
 }

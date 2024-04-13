@@ -326,5 +326,20 @@ if (isset($action)) {
             include_once 'view/page_user_edit.php';
             include_once 'view/footer.php';
             break;
+
+        case 'order':
+            $categoryList = category_list();
+            $orderQuery = pdo_query("SELECT chitietdonhang.*, sanpham.TenSanPham, sanpham.HinhAnh
+            FROM chitietdonhang
+            INNER JOIN sanpham ON chitietdonhang.MaSanPham = sanpham.MaSanPham
+            WHERE MaKhachHang = ". $_SESSION['user']['MaKhachHang']);
+
+            // echo '<pre>';
+            // print_r($orderQuery);
+            // echo '</pre>';
+            include_once 'view/header.php';
+            include_once 'view/page_user_order.php';
+            include_once 'view/footer.php';
+            break;
     }
 }

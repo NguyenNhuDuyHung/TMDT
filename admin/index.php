@@ -13,5 +13,7 @@ if (isset($modules)) {
             include_once 'control/product.php';
         case 'user':
             include_once 'control/user.php';
+        case 'order':
+            include_once 'control/order.php';
     }
 }

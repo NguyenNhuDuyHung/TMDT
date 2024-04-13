@@ -49,12 +49,6 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <?php if (!empty($_SESSION['cartUser'])) : ?>
-                            <div class="cart-price" style="display: flex; justify-content: flex-end; padding-right: 30px">
-                                <h4>Tổng tiền: <?= $count ?>₫</h4>
-                            </div>
-                        <?php endif; ?>
-
                         <?php if (empty($_SESSION['cartUser'])) : ?>
                             <div class="no-product">
                                 <h2>(Chưa có sản phẩm nào) nhấn vào
@@ -106,12 +100,6 @@
                                 </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
-                        <?php if (!empty($_SESSION['cart'])) : ?>
-                            <div class="cart-price" style="display: flex; justify-content: flex-end; padding-right: 30px">
-                                <h4>Tổng tiền: <?= $count ?>₫</h4>
-                            </div>
-                        <?php endif; ?>
-
                         <?php if (empty($_SESSION['cart'])) : ?>
                             <div class="no-product">
                                 <h2>(Chưa có sản phẩm nào) nhấn vào
